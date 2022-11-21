@@ -1,10 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import { ICardData, IExploreItem, ILargeCardData } from "../type";
-import { NextPage } from "next";
 import { cardData, exploreData, LargeCardData } from "../constants";
 import SmallCard from "../components/SmallCard";
 import MediumCard from "../components/MediumCard";
@@ -55,6 +52,7 @@ export default function Home({
 }
 
 export async function getStaticProps() {
+  // To avoid network latency
   return {
     props: {
       exploreData,
