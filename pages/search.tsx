@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import InfoCard from "../components/InfoCard";
+import { serverProps } from "../constants";
 import { ISearchData } from "../type";
 import { getDateString } from "../utils/date";
 
@@ -31,6 +33,10 @@ const Search: React.FC<SearchProps> = ({ searchResult }) => {
             <p className="chip">Rooms and Beds</p>
             <p className="chip">More filters</p>
           </div>
+
+          {searchResult?.map((item) => (
+            <InfoCard key={item.img} {...item} />
+          ))}
         </section>
         <section></section>
       </main>
@@ -42,10 +48,8 @@ const Search: React.FC<SearchProps> = ({ searchResult }) => {
 export default Search;
 
 export async function getServerSideProps() {
-  const searchResult: ISearchData[] = await fetch(
-    "https://links.papareact.com/isz"
-  ).then((res) => res.json());
-
+  //TODO: will use my backend data later
+  const searchResult: ISearchData[] = serverProps;
   return {
     props: {
       searchResult,
