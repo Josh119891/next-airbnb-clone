@@ -38,7 +38,8 @@ const Header: React.FC<HeaderProps> = ({ placeholder }) => {
 
   const resetInput = () => setSearchInput("");
 
-  const onSearch = () =>
+  const onSearch = () => {
+    setSearchInput("");
     router.push({
       pathname: "/search",
       query: {
@@ -48,6 +49,8 @@ const Header: React.FC<HeaderProps> = ({ placeholder }) => {
         numOfGuests,
       },
     });
+  };
+
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
       {/* Left */}

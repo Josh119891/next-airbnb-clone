@@ -48,7 +48,6 @@ const Search: React.FC<SearchProps> = ({ searchResult }) => {
 export default Search;
 
 export async function getServerSideProps() {
-  //TODO: will use my backend data later
   const searchResult: ISearchData[] = serverProps;
   return {
     props: {
